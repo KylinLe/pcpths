@@ -38,6 +38,7 @@
 | 列表 | `.list`（黑色顶线）> `.list-item`（`.n` 序号 / `.t` 标题 / `.d` 描述） |
 | 可点击列表 | `.list-item.plan-item` 加 `.go` 小按钮（主页"后续计划"用法） |
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
+| 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
 
