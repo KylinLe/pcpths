@@ -40,6 +40,13 @@
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
+
+### 细线规则（美观为先，禁止过度使用）
+
+- 结构分隔一律 1px 浅灰 `--line`：分节、列表行、导航/页脚/底栏边缘、手机菜单
+- 纯黑 `--ink` 仅限三处强调：列表/模块顶部起始线（`.list`、`.courses`）、按钮描边（`.platform-btn`、`.go`）、链接悬停下划线
+- 只用 1px；同方向禁止近距双线；拿不准就用浅灰
+- 计划分页（`plan/`）内容区不设上下框线，以留白分隔
 - 分页面引用路径相对（`../css/style.css`、`../assets/logo.png`）
 - 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）
 - 长标题用 `.plan-title`（h1 的缩小变体）；滚动显现统一用 `.reveal` 类
