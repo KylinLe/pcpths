@@ -37,14 +37,14 @@
 
 | 用途 | 组件 |
 |------|------|
-| 顶部导航 | `.nav`（毛玻璃顶栏，含品牌区、链接、上课平台按钮、移动端菜单） |
+| 顶部导航 | `.nav`（毛玻璃顶栏，含品牌区、链接、上课平台按钮、移动端菜单；主页导航与手机菜单含「通知」入口 `.notices-toggle`，点击重新显示全部通知） |
 | 页面首屏 | `section.hero` > `.wrap`：`.eyebrow` + `h1` + `.hero-en` |
 | 内容分节 | `section.sec` > `.wrap`：`.sec-head`（`.sec-num` + `h2` + `.en`）+ `.sec-body` |
 | 列表 | `.list`（黑色顶线）> `.list-item`（`.n` 序号 / `.t` 标题 / `.d` 描述） |
 | 可点击列表 | `.list-item.plan-item` 加 `.go` 小按钮（主页"后续计划"用法） |
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
-| 通知栏 | `.notices` 容器（主页顶栏下方固定）+ 多条 `.notice` 黑底细条堆叠（`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭；JS 按可见条数动态更新 `--notice-h`，`body` 加 `has-notice` 给内容与锚点让位） |
+| 通知栏 | `.notices` 容器（主页顶栏下方固定，始终留在 DOM）+ 多条 `.notice` 黑底细条堆叠（`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭；JS 按可见条数动态更新 `--notices-h`，`body` 加 `has-notice` 给内容与锚点让位；关闭记录存 localStorage 同浏览器持久，顶栏「通知」入口可重新显示全部） |
 | 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言；带 `data-file` 属性的才会触发下载弹窗，普通链接跳转不弹窗；多个按钮用 `.dl-opts` 双栏网格并排，移动端单列） |
 | 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 按钮；Esc / 点遮罩关闭。`#dlModal` 开始下载提示，文件名由按钮 `data-file` 动态填入 `#dlFile`；`#iosModal` Safari 使用提醒，确定后下载并跳转指南页） |
 
@@ -58,7 +58,7 @@
 - 计划分页（`plan/`）内容区不设上下框线，以留白分隔
 - 分页面引用路径相对（`../css/style.css`、`../assets/logo.png`）
 - 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）
-- 主页通知栏 `.notices`（黑底白字，可多条堆叠，条与条之间用白色 18% 细线分隔——白底浅灰线的反相；关闭后本次浏览不再出现）
+- 主页通知栏 `.notices`（黑底白字，可多条堆叠，条与条之间用白色 18% 细线分隔——白底浅灰线的反相；关闭后同浏览器不再出现，顶栏「通知」可重新显示）
 - 长标题用 `.plan-title`（h1 的缩小变体）；滚动显现统一用 `.reveal` 类
 
 ## 发布流程

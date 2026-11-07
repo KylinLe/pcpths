@@ -94,34 +94,38 @@
     });
   }
 
-  /* ---------- 5. 通知栏（主页可多条堆叠，各自可关闭，本次浏览内记住） ---------- */
+  /* ---------- 5. 通知栏（主页可多条堆叠；关闭后同浏览器持久记住，顶栏「通知」可重新显示全部） ---------- */
   var notices = Array.prototype.slice.call(document.querySelectorAll('.notice'));
   if (notices.length) {
     var noticesBox = document.getElementById('notices');
+    var storageKey = 'pcpths-notices-closed';
     var closedIds = [];
     try {
-      closedIds = (sessionStorage.getItem('pcpths-notices-closed') || '').split(',').filter(Boolean);
-      // 兼容旧的单条关闭记录
-      if (sessionStorage.getItem('pcpths-plan-notice') === 'closed' && closedIds.indexOf('notice-plans') === -1) {
-        closedIds.push('notice-plans');
+      var stored = localStorage.getItem(storageKey) || '';
+      // 迁移旧版记录（sessionStorage 仅本次浏览有效 → 持久化）
+      if (!stored) stored = sessionStorage.getItem(storageKey) || '';
+      if (sessionStorage.getItem('pcpths-plan-notice') === 'closed') {
+        stored = stored ? stored + ',notice-plans' : 'notice-plans';
       }
+      if (stored) localStorage.setItem(storageKey, stored);
+      sessionStorage.removeItem(storageKey);
+      sessionStorage.removeItem('pcpths-plan-notice');
+      closedIds = stored.split(',').filter(Boolean);
     } catch (e) {}
 
     function syncNotices() {
       var visible = notices.filter(function (n) { return document.documentElement.contains(n); });
       document.body.style.setProperty('--notices-h', (visible.length * 44) + 'px');
-      if (!visible.length) {
-        document.body.classList.remove('has-notice');
-        if (noticesBox) noticesBox.remove();
-      }
+      document.body.classList.toggle('has-notice', visible.length > 0);
+      // 容器始终保留在 DOM 中，以便「通知」入口随时重新显示
     }
 
     function closeNotice(n) {
       n.remove();
       try {
-        var list = (sessionStorage.getItem('pcpths-notices-closed') || '').split(',').filter(Boolean);
+        var list = (localStorage.getItem(storageKey) || '').split(',').filter(Boolean);
         if (n.id && list.indexOf(n.id) === -1) list.push(n.id);
-        sessionStorage.setItem('pcpths-notices-closed', list.join(','));
+        localStorage.setItem(storageKey, list.join(','));
       } catch (e) {}
       syncNotices();
     }
@@ -131,6 +135,19 @@
       var btn = n.querySelector('.notice-close');
       if (btn) btn.addEventListener('click', function () { closeNotice(n); });
     });
+
+    /* 顶栏「通知」入口：重新显示全部通知 */
+    Array.prototype.slice.call(document.querySelectorAll('.notices-toggle')).forEach(function (t) {
+      t.addEventListener('click', function (e) {
+        e.preventDefault();
+        notices.forEach(function (n) {
+          if (!document.documentElement.contains(n) && noticesBox) noticesBox.appendChild(n);
+        });
+        try { localStorage.removeItem(storageKey); } catch (err) {}
+        syncNotices();
+      });
+    });
+
     syncNotices();
   }
 
