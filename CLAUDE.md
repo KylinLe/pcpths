@@ -39,7 +39,7 @@
 | 可点击列表 | `.list-item.plan-item` 加 `.go` 小按钮（主页"后续计划"用法） |
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
-| 通知栏 | `.notice`（计划分页顶部固定黑底细条：`.notice-link` 整条可点 + `.notice-close` 细线 × 可关闭；`body` 加 `has-notice` 类给内容让位） |
+| 通知栏 | `.notice`（主页顶栏下方固定黑底细条：`.notice-link` 整条可点跳转 `#plans` + `.notice-close` 细线 × 可关闭；`body` 加 `has-notice` 类给内容与锚点让位） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
 
@@ -50,7 +50,8 @@
 - 只用 1px；同方向禁止近距双线；拿不准就用浅灰
 - 计划分页（`plan/`）内容区不设上下框线，以留白分隔
 - 分页面引用路径相对（`../css/style.css`、`../assets/logo.png`）
-- 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）；顶部通知栏 `.notice`（黑底白字，白底浅灰线的反相：黑底上的结构线用白色 18% 透明度）
+- 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）
+- 主页通知栏 `.notice`（黑底白字，白底浅灰线的反相：黑底上的结构线用白色 18% 透明度；关闭后本次浏览不再出现）
 - 长标题用 `.plan-title`（h1 的缩小变体）；滚动显现统一用 `.reveal` 类
 
 ## 发布流程

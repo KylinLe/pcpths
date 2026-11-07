@@ -24,6 +24,7 @@ html{
   scroll-behavior:smooth;
 }
 section[id]{ scroll-margin-top:64px; }
+.has-notice section[id]{ scroll-margin-top:calc(64px + var(--notice-h)); }
 
 body{
   background:var(--paper);

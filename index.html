@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="has-notice">
 
 <!-- ================= 导航 ================= -->
 <header class="nav" id="nav">
@@ -39,6 +39,17 @@
     <a href="#plans">计划</a>
   </div>
 </header>
+
+<!-- ================= 通知栏 ================= -->
+<div class="notice" id="notice">
+  <a class="notice-link" href="#plans">
+    <span class="t">拍摄计划更新</span>
+    <span class="more">查看后续计划 →</span>
+  </a>
+  <button class="notice-close" id="noticeClose" aria-label="关闭通知">
+    <span></span><span></span>
+  </button>
+</div>
 
 <main id="top">
 
