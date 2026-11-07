@@ -25,6 +25,7 @@ html{
 section[id]{ scroll-margin-top:64px; }
 
 body{
+  display:flex; flex-direction:column; min-height:100vh;
   background:var(--paper);
   color:var(--ink);
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC",
@@ -35,6 +36,7 @@ body{
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
 }
+main{ flex:1; }
 
 ::selection{ background:var(--ink); color:var(--paper); }
 
@@ -250,38 +252,27 @@ p{ color:var(--muted); }
 .list-item .t{ font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.01em; }
 .list-item .d{ font-size:14.5px; line-height:1.85; color:var(--muted); }
 
-/* 后续计划 —— 可点击列表 */
-.plan-list{ border-top:1px solid var(--ink); }
-.plan-item{
-  display:grid;
-  grid-template-columns:clamp(40px,6vw,80px) minmax(0,1fr) auto;
-  gap:clamp(12px,3vw,32px);
-  align-items:baseline;
-  padding:clamp(20px,2.6vw,30px) 0;
-  border-bottom:1px solid var(--line);
-  transition:padding-left .45s var(--ease);
+/* 后续计划 —— 可点击列表（外观与任务列表一致） */
+.plan-item{ cursor:pointer; }
+.plan-item .t{ transition:color .3s var(--ease); }
+.plan-item:hover .t{
+  text-decoration:underline; text-underline-offset:7px; text-decoration-thickness:1px;
 }
-.plan-item:hover{ padding-left:10px; }
-.plan-item .n{ font-size:11px; letter-spacing:.18em; color:var(--faint); }
-.plan-item .t{ font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.01em; }
-.plan-item .arrow{
-  font-size:14px; color:var(--faint);
-  transition:transform .45s var(--ease), color .3s var(--ease);
+.plan-item .go{
+  justify-self:end;
+  display:inline-flex; align-items:center;
+  padding:8px 16px;
+  border:1px solid var(--ink);
+  font-size:12px; letter-spacing:.14em;
+  white-space:nowrap;
+  transition:background .3s var(--ease), color .3s var(--ease);
 }
-.plan-item:hover .arrow{ transform:translateX(6px); color:var(--ink); }
+.plan-item:hover .go{ background:var(--ink); color:var(--paper); }
 
 /* ---------- 计划页 ---------- */
-.back-btn{
-  position:fixed; top:26px; left:var(--pad); z-index:100;
-  font-size:13px; letter-spacing:.14em; color:var(--muted);
-  transition:color .3s var(--ease);
-}
-.back-btn:hover{ color:var(--ink); }
-
 .plan-page{
-  min-height:100vh;
   display:grid; align-content:center; justify-items:center;
-  padding:96px var(--pad) 64px;
+  padding:112px var(--pad) 80px;
 }
 .plan-hero{ text-align:center; }
 .plan-hero .eyebrow{ padding-left:0; }
@@ -339,6 +330,7 @@ p{ color:var(--muted); }
   .sec-num{ padding-top:0; }
   .list-item{ grid-template-columns:40px minmax(0,1fr); }
   .list-item .d{ grid-column:2; }
+  .list-item .go{ grid-column:2; justify-self:start; margin-top:10px; }
   .foot-inner{ flex-direction:column; align-items:flex-start; }
   .foot .legal{ text-align:left; }
 }

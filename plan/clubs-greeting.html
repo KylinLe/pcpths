@@ -10,9 +10,39 @@
 </head>
 <body>
 
-<a class="back-btn" href="../index.html">← 返回主页</a>
+<!-- ================= 导航 ================= -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../index.html" aria-label="返回首页">
+      <img src="../assets/logo.png" alt="" width="26" height="26">
+      <span>
+        <span class="name">普陀中学摄影社</span>
+        <span class="sub">Photography Club of Putuo High School</span>
+      </span>
+    </a>
 
-<main class="plan-page">
+    <nav class="nav-links" aria-label="主导航">
+      <a href="../index.html">首页</a>
+      <a href="../index.html#courses">课程</a>
+      <a href="../index.html#missions">任务</a>
+      <a href="../index.html#plans">计划</a>
+    </nav>
+
+    <a class="platform-btn" href="https://kylinle.github.io/cp" target="_blank" rel="noopener">上课平台</a>
+
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="打开菜单">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html">首页</a>
+    <a href="../index.html#courses">课程</a>
+    <a href="../index.html#missions">任务</a>
+    <a href="../index.html#plans">计划</a>
+  </div>
+</header>
+
+<main class="plan-page" id="top">
   <div class="plan-hero reveal">
     <div class="eyebrow">普陀中学摄影社 · 后续计划</div>
     <h1 class="plan-title">元旦各社团祝福拍摄</h1>
@@ -24,6 +54,22 @@
     <!-- 在这里添加计划内容 -->
   </div>
 </main>
+
+<!-- ================= 页脚 ================= -->
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <a class="brand" href="../index.html#top">
+      <img src="../assets/logo.png" alt="" width="26" height="26">
+      <span>
+        <span class="name">普陀中学摄影社</span>
+        <span class="sub">Photography Club of Putuo High School</span>
+      </span>
+    </a>
+    <div class="legal">
+      ©️ Copyright 乐轩宁 of 普陀中学摄影社
+    </div>
+  </div>
+</footer>
 
 <script src="../js/main.js"></script>
 </body>
