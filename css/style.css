@@ -349,6 +349,58 @@ p{ color:var(--muted); }
   padding:14px 0;
 }
 
+/* ---------- 下载模块 ---------- */
+.dl-btn{
+  margin-top:28px;
+  display:inline-flex; align-items:center;
+  padding:13px 32px;
+  border:1px solid var(--ink);
+  font-size:13px; font-weight:600; letter-spacing:.16em;
+  white-space:nowrap;
+  transition:background .3s var(--ease), color .3s var(--ease);
+}
+.dl-btn:hover{ background:var(--ink); color:var(--paper); }
+.dl-meta{ margin-top:14px; font-size:11px; letter-spacing:.12em; color:var(--faint); }
+
+/* ---------- 弹窗 ---------- */
+.modal{
+  position:fixed; inset:0; z-index:200;
+  display:none;
+}
+.modal.is-open{ display:block; }
+.modal-mask{
+  position:absolute; inset:0;
+  background:rgba(15,15,15,.35);
+  animation:modal-fade .3s var(--ease) both;
+}
+.modal-box{
+  position:absolute; left:50%; top:50%;
+  transform:translate(-50%,-50%);
+  width:min(420px, calc(100vw - 48px));
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:clamp(28px,5vw,44px);
+  animation:modal-in .45s var(--ease) both;
+}
+.modal-title{ font-size:16px; font-weight:600; letter-spacing:.2em; }
+.modal-desc{ margin-top:16px; font-size:13.5px; line-height:1.9; color:var(--muted); }
+.modal-btn{
+  margin-top:28px;
+  display:inline-flex; align-items:center;
+  padding:10px 22px;
+  border:1px solid var(--ink);
+  background:var(--paper); color:var(--ink);
+  font-size:12px; letter-spacing:.14em;
+  cursor:pointer;
+  transition:background .3s var(--ease), color .3s var(--ease);
+}
+.modal-btn:hover{ background:var(--ink); color:var(--paper); }
+@keyframes modal-fade{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes modal-in{
+  from{ opacity:0; transform:translate(-50%,-44%); }
+  to{ opacity:1; transform:translate(-50%,-50%); }
+}
+
 /* ---------- 页脚 ---------- */
 .foot{
   padding:clamp(48px,7vw,72px) 0 clamp(40px,6vw,64px);

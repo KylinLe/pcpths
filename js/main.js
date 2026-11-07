@@ -1,6 +1,6 @@
 /* ============================================================
    普陀中学摄影社 — 交互脚本
-   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 平滑锚点
+   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 下载弹窗 / 平滑锚点
    ============================================================ */
 
 (function () {
@@ -112,7 +112,26 @@
     noticeClose.addEventListener('click', hideNotice);
   }
 
-  /* ---------- 6. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
+  /* ---------- 6. 下载弹窗 ---------- */
+  var dlBtn = document.getElementById('dlBtn');
+  var dlModal = document.getElementById('dlModal');
+
+  if (dlBtn && dlModal) {
+    var dlClose = document.getElementById('dlModalClose');
+    var dlMask = dlModal.querySelector('.modal-mask');
+
+    function openModal() { dlModal.classList.add('is-open'); }
+    function closeModal() { dlModal.classList.remove('is-open'); }
+
+    dlBtn.addEventListener('click', openModal);
+    if (dlClose) dlClose.addEventListener('click', closeModal);
+    if (dlMask) dlMask.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && dlModal.classList.contains('is-open')) closeModal();
+    });
+  }
+
+  /* ---------- 7. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
   if (!('scrollBehavior' in document.documentElement.style)) {
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
