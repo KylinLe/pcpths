@@ -276,9 +276,7 @@ p{ color:var(--muted); }
 }
 .foot.foot-bar{
   position:fixed; inset:auto 0 0 0; z-index:100;
-  background:rgba(255,255,255,.82);
-  backdrop-filter:saturate(180%) blur(14px);
-  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  background:var(--paper);
   border-top:1px solid var(--line);
   padding:14px 0;
 }
@@ -341,7 +339,7 @@ p{ color:var(--muted); }
   .list-item .go{ grid-column:2; justify-self:start; margin-top:10px; }
   .foot-inner{ flex-direction:column; align-items:flex-start; }
   .foot .legal{ text-align:left; }
-  .foot-bar .legal{ display:none; }
+  .foot.foot-bar .foot-inner{ flex-direction:row; align-items:center; justify-content:space-between; }
 }
 
 @media (prefers-reduced-motion: reduce){
