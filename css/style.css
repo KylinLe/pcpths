@@ -77,7 +77,7 @@ img{ display:block; max-width:100%; }
   color:var(--faint); text-transform:uppercase; margin-top:3px; font-weight:500;
 }
 
-.nav-links{ display:flex; gap:clamp(18px,2.4vw,36px); }
+.nav-links{ display:flex; gap:clamp(18px,2.4vw,36px); margin-left:auto; }
 .nav-links a{
   font-size:13px; letter-spacing:.14em; color:var(--muted);
   padding:6px 0; position:relative; transition:color .3s var(--ease);
@@ -90,6 +90,17 @@ img{ display:block; max-width:100%; }
 }
 .nav-links a:hover{ color:var(--ink); }
 .nav-links a:hover::after{ transform:scaleX(1); transform-origin:left; }
+
+/* 上课平台按钮 */
+.platform-btn{
+  display:inline-flex; align-items:center;
+  padding:9px 20px;
+  border:1px solid var(--ink);
+  font-size:12px; letter-spacing:.14em;
+  white-space:nowrap;
+  transition:background .3s var(--ease), color .3s var(--ease);
+}
+.platform-btn:hover{ background:var(--ink); color:var(--paper); }
 
 .menu-btn{
   display:none; width:40px; height:40px; margin-right:-8px;
@@ -239,39 +250,6 @@ p{ color:var(--muted); }
 .list-item .t{ font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.01em; }
 .list-item .d{ font-size:14.5px; line-height:1.85; color:var(--muted); }
 
-/* ---------- 招新（反白） ---------- */
-.join{
-  background:var(--ink); color:var(--paper);
-  padding:clamp(80px,12vw,140px) 0;
-}
-.join .sec-num{ color:#6c6c72; }
-.join h2{ color:var(--paper); }
-.join .en{ color:#8b8b91; }
-.join-inner{
-  display:grid; grid-template-columns:minmax(0,1fr) auto;
-  gap:clamp(32px,6vw,80px); align-items:end;
-}
-.join-big{
-  font-size:clamp(40px,7vw,84px);
-  line-height:1.02; letter-spacing:-.03em; font-weight:600;
-  margin-top:clamp(20px,3vw,32px);
-}
-.join-big .dim{ color:#75757c; }
-.join-en{
-  margin-top:20px; font-size:11px; letter-spacing:.34em;
-  text-transform:uppercase; color:#8b8b91;
-}
-.join-meta{
-  margin-top:clamp(32px,5vw,48px);
-  display:flex; gap:clamp(28px,5vw,64px); flex-wrap:wrap;
-  border-top:1px solid #2a2a2e; padding-top:24px;
-}
-.join-meta .k{ font-size:10px; letter-spacing:.2em; color:#6c6c72; margin-bottom:10px; }
-.join-meta .v{ font-size:15px; letter-spacing:.02em; }
-
-.join-mark{ width:clamp(120px,16vw,200px); opacity:.9; }
-.join-mark svg{ width:100%; height:auto; display:block; }
-
 /* ---------- 页脚 ---------- */
 .foot{
   padding:clamp(48px,7vw,72px) 0 clamp(40px,6vw,64px);
@@ -299,15 +277,12 @@ p{ color:var(--muted); }
   .aperture{ width:clamp(150px,40vw,220px); height:clamp(150px,40vw,220px); order:-1; margin-bottom:8px; }
   .courses{ grid-template-columns:1fr; }
   .course + .course{ border-left:0; border-top:1px solid var(--line); padding-left:0; }
-  .join-inner{ grid-template-columns:1fr; }
-  .join-mark{ display:none; }
 }
 
 @media (max-width: 720px){
-  .nav-links{ display:none; }
-  .join-meta{ flex-direction:column; gap:20px; }
-  .join-meta > div{ display:flex; align-items:baseline; gap:14px; }
-  .join-meta .k{ margin-bottom:0; min-width:64px; }
+  .nav-links{ display:none; margin-left:0; }
+  .platform-btn{ margin-left:auto; padding:7px 14px; }
+  .nav .brand .sub{ display:none; }
   .menu-btn{ display:block; }
   .sec-head,.sec-body{ grid-template-columns:1fr; gap:14px; }
   .sec-num{ padding-top:0; }

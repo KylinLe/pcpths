@@ -1,6 +1,6 @@
 # pcpths
 
-Website of Photography Club of PTHS（普陀中学摄影社官方网站）
+Website of Photography Club of Putuo High School（普陀中学摄影社官方网站）
 
 线上地址：<https://kylinle.github.io/pcpths/>
 
