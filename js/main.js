@@ -1,6 +1,6 @@
 /* ============================================================
    普陀中学摄影社 — 交互脚本
-   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 下载弹窗 / 平滑锚点
+   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 下载弹窗 / Safari 提醒弹窗 / 平滑锚点
    ============================================================ */
 
 (function () {
@@ -112,8 +112,8 @@
     noticeClose.addEventListener('click', hideNotice);
   }
 
-  /* ---------- 6. 下载弹窗（所有 .dl-btn 通用，弹窗内显示对应文件名） ---------- */
-  var dlBtns = Array.prototype.slice.call(document.querySelectorAll('.dl-btn'));
+  /* ---------- 6. 下载弹窗（仅带 data-file 的 .dl-btn 触发，弹窗内显示对应文件名） ---------- */
+  var dlBtns = Array.prototype.slice.call(document.querySelectorAll('.dl-btn[data-file]'));
   var dlModal = document.getElementById('dlModal');
 
   if (dlBtns.length && dlModal) {
@@ -139,7 +139,39 @@
     });
   }
 
-  /* ---------- 7. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
+  /* ---------- 7. 苹果版下载：Safari 提醒弹窗，确定后下载并进入安装指南 ---------- */
+  var iosBtn = document.getElementById('iosDlBtn');
+  var iosModal = document.getElementById('iosModal');
+
+  if (iosBtn && iosModal) {
+    var iosConfirm = document.getElementById('iosModalConfirm');
+    var iosMask = iosModal.querySelector('.modal-mask');
+
+    function openIosModal() { iosModal.classList.add('is-open'); }
+    function closeIosModal() { iosModal.classList.remove('is-open'); }
+
+    iosBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openIosModal();
+    });
+
+    if (iosConfirm) iosConfirm.addEventListener('click', function () {
+      var a = document.createElement('a');
+      a.href = iosBtn.getAttribute('href') || 'downloads/普陀中学摄影社.mobileconfig';
+      a.setAttribute('download', '');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.location.href = 'guide/ios-install.html';
+    });
+
+    if (iosMask) iosMask.addEventListener('click', closeIosModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && iosModal.classList.contains('is-open')) closeIosModal();
+    });
+  }
+
+  /* ---------- 8. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
   if (!('scrollBehavior' in document.documentElement.style)) {
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
