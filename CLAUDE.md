@@ -23,10 +23,10 @@
 │   ├── clubs-greeting.html   # 元旦各社团祝福拍摄（已填内容）
 │   └── gala-recording.html   # 元旦晚会拍摄与录制（岗位安排表）
 ├── guide/              # 使用指南分页面
-│   └── ios-install.html    # 苹果版 APP 安装指南（主页 05 模块跳转到这里）
+│   └── ios-install.html    # 苹果版 APP 安装指南（主页 04 APP 下载模块的苹果版按钮跳转到这里）
 ├── downloads/          # 供下载的文件（主页下载按钮指向这里）
 │   ├── pcpths_android.apk    # 安卓版 APP 安装包（04 模块）
-│   └── 普陀中学摄影社.mobileconfig  # 苹果版安装配置文件（05 模块）
+│   └── 普陀中学摄影社.mobileconfig  # 苹果版安装配置文件（04 模块苹果版按钮）
 ├── assets/logo.png     # 社团 logo（导航、页脚、favicon）
 └── .gitignore          # 排除 .DS_Store
 ```
