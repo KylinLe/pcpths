@@ -12,8 +12,11 @@ Website of Photography Club of Putuo High School（普陀中学摄影社官方�
 │   └── style.css       # 全部样式
 ├── js/
 │   └── main.js         # 交互脚本
+├── plan/
+│   ├── clubs-greeting.html   # 元旦各社团祝福拍摄
+│   └── gala-recording.html   # 元旦晚会拍摄与录制
 └── assets/
-    └── favicon.svg     # 网站图标
+    └── logo.png        # 社团 logo（导航、页脚、网站图标）
 ```
 
 ## 发布

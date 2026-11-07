@@ -68,7 +68,7 @@ img{ display:block; max-width:100%; }
 }
 
 .brand{ display:flex; align-items:center; gap:12px; }
-.brand svg{ width:26px; height:26px; flex:0 0 auto; }
+.brand img{ width:26px; height:26px; flex:0 0 auto; }
 .brand .name{
   font-size:14px; font-weight:600; letter-spacing:.14em;
 }
@@ -249,6 +249,57 @@ p{ color:var(--muted); }
 .list-item .n{ font-size:11px; letter-spacing:.18em; color:var(--faint); }
 .list-item .t{ font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.01em; }
 .list-item .d{ font-size:14.5px; line-height:1.85; color:var(--muted); }
+
+/* 后续计划 —— 可点击列表 */
+.plan-list{ border-top:1px solid var(--ink); }
+.plan-item{
+  display:grid;
+  grid-template-columns:clamp(40px,6vw,80px) minmax(0,1fr) auto;
+  gap:clamp(12px,3vw,32px);
+  align-items:baseline;
+  padding:clamp(20px,2.6vw,30px) 0;
+  border-bottom:1px solid var(--line);
+  transition:padding-left .45s var(--ease);
+}
+.plan-item:hover{ padding-left:10px; }
+.plan-item .n{ font-size:11px; letter-spacing:.18em; color:var(--faint); }
+.plan-item .t{ font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.01em; }
+.plan-item .arrow{
+  font-size:14px; color:var(--faint);
+  transition:transform .45s var(--ease), color .3s var(--ease);
+}
+.plan-item:hover .arrow{ transform:translateX(6px); color:var(--ink); }
+
+/* ---------- 计划页 ---------- */
+.back-btn{
+  position:fixed; top:26px; left:var(--pad); z-index:100;
+  font-size:13px; letter-spacing:.14em; color:var(--muted);
+  transition:color .3s var(--ease);
+}
+.back-btn:hover{ color:var(--ink); }
+
+.plan-page{
+  min-height:100vh;
+  display:grid; align-content:center; justify-items:center;
+  padding:96px var(--pad) 64px;
+}
+.plan-hero{ text-align:center; }
+.plan-hero .eyebrow{ padding-left:0; }
+.plan-title{
+  margin-left:0;
+  font-size:clamp(40px,7vw,84px);
+  line-height:1.08; letter-spacing:-.02em;
+}
+.plan-sub{
+  margin-top:20px; font-size:11px; letter-spacing:.34em;
+  text-transform:uppercase; color:var(--faint);
+}
+.plan-body{
+  width:100%; max-width:var(--maxw);
+  margin-top:clamp(56px,8vw,96px);
+  border-top:1px solid var(--ink);
+  min-height:40vh;
+}
 
 /* ---------- 页脚 ---------- */
 .foot{

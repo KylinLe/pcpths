@@ -12,6 +12,7 @@
   var nav = document.getElementById('nav');
   var lastY = -1;
   function onScrollNav() {
+    if (!nav) return;
     var y = window.scrollY || window.pageYOffset;
     if (y === lastY) return;
     lastY = y;
@@ -68,28 +69,30 @@
   var btn = document.getElementById('menuBtn');
   var menu = document.getElementById('mobileMenu');
 
-  function closeMenu() {
-    btn.setAttribute('aria-expanded', 'false');
-    menu.classList.remove('is-open');
+  if (btn && menu) {
+    function closeMenu() {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('is-open');
+    }
+
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('is-open', !open);
+    });
+
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') closeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 720) closeMenu();
+    });
   }
-
-  btn.addEventListener('click', function () {
-    var open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!open));
-    menu.classList.toggle('is-open', !open);
-  });
-
-  menu.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') closeMenu();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenu();
-  });
-
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 720) closeMenu();
-  });
 
   /* ---------- 5. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
   if (!('scrollBehavior' in document.documentElement.style)) {
