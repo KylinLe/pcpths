@@ -1,24 +1,42 @@
-# pcpths
+# 普陀中学摄影社官网
 
 Website of Photography Club of Putuo High School（普陀中学摄影社官方网站）
 
-线上地址：<https://kylinle.github.io/pcpths/>
+🌐 线上地址：<https://kylinle.github.io/pcpths/>
+
+## 关于本站
+
+摄影社官方静态网站，采用 **细线 / 黑白 / 字距** 的极简设计，全站统一设计语言。包含：
+
+- **首页**：首屏（"留住光"）、课程介绍、任务与活动、后续摄影计划
+- **计划分页**：元旦各社团祝福拍摄、元旦晚会拍摄与录制
+- 移动端自适应、滚动显现动画、毛玻璃导航栏
 
 ## 目录结构
 
 ```
 ├── index.html          # 首页（结构与内容）
 ├── css/
-│   └── style.css       # 全部样式
+│   └── style.css       # 全部样式（设计变量集中在文件顶部 :root）
 ├── js/
-│   └── main.js         # 交互脚本
-├── plan/
+│   └── main.js         # 全部交互脚本
+├── plan/               # 后续计划分页面
 │   ├── clubs-greeting.html   # 元旦各社团祝福拍摄
 │   └── gala-recording.html   # 元旦晚会拍摄与录制
 └── assets/
-    └── logo.png        # 社团 logo（导航、页脚、网站图标）
+    └── logo.png        # 社团 logo（导航栏、页脚、浏览器标签页图标）
 ```
 
-## 发布
+## 发布方式
 
-仓库使用 GitHub Pages，从 `main` 分支自动部署。将改动 push 到 `main` 后，网站约 1–2 分钟内自动更新。
+本仓库使用 **GitHub Pages** 从 `main` 分支根目录自动部署：
+
+1. 修改本地文件并提交
+2. 推送到 `main` 分支
+3. 网站约 1–2 分钟内自动更新（无需任何手动操作）
+
+## 技术说明
+
+- 纯静态 HTML/CSS/JS，无框架、无构建步骤，任何编辑器均可修改
+- 所有分页面复用主页的样式与组件，改一处样式全站生效
+- 使用相对路径引用资源，域名或路径变更不影响页面
