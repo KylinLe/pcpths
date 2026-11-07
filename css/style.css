@@ -163,6 +163,8 @@ img{ display:block; max-width:100%; }
   from{ transform:translateY(-100%); opacity:0; }
   to{ transform:translateY(0); opacity:1; }
 }
+/* 顶栏「通知」点击后重新播放滑入动画（即使通知已显示，也有可见的弹出反馈） */
+.notices.repop{ animation:notice-in .55s var(--ease) backwards; }
 
 /* ---------- 首屏 ---------- */
 .hero{

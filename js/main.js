@@ -136,7 +136,7 @@
       if (btn) btn.addEventListener('click', function () { closeNotice(n); });
     });
 
-    /* 顶栏「通知」入口：重新显示全部通知 */
+    /* 顶栏「通知」入口：重新显示全部通知，并重播滑入动画作为弹出反馈 */
     Array.prototype.slice.call(document.querySelectorAll('.notices-toggle')).forEach(function (t) {
       t.addEventListener('click', function (e) {
         e.preventDefault();
@@ -145,6 +145,11 @@
         });
         try { localStorage.removeItem(storageKey); } catch (err) {}
         syncNotices();
+        if (noticesBox) {
+          noticesBox.classList.remove('repop');
+          void noticesBox.offsetWidth; /* 强制回流，让动画可重新播放 */
+          noticesBox.classList.add('repop');
+        }
       });
     });
 
