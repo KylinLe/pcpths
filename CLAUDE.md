@@ -21,7 +21,7 @@
 ├── js/main.js          # 全部交互（对缺失元素有防御性判断，可安全用于任何分页面）
 ├── plan/               # 计划分页面
 │   ├── clubs-greeting.html   # 元旦各社团祝福拍摄（已填内容）
-│   └── gala-recording.html   # 元旦晚会拍摄与录制（框架，待填）
+│   └── gala-recording.html   # 元旦晚会拍摄与录制（岗位安排表）
 ├── assets/logo.png     # 社团 logo（导航、页脚、favicon）
 └── .gitignore          # 排除 .DS_Store
 ```
@@ -39,6 +39,7 @@
 | 可点击列表 | `.list-item.plan-item` 加 `.go` 小按钮（主页"后续计划"用法） |
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
+| 通知栏 | `.notice`（计划分页顶部固定黑底细条：`.notice-link` 整条可点 + `.notice-close` 细线 × 可关闭；`body` 加 `has-notice` 类给内容让位） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
 
@@ -49,7 +50,7 @@
 - 只用 1px；同方向禁止近距双线；拿不准就用浅灰
 - 计划分页（`plan/`）内容区不设上下框线，以留白分隔
 - 分页面引用路径相对（`../css/style.css`、`../assets/logo.png`）
-- 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）
+- 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）；顶部通知栏 `.notice`（黑底白字，白底浅灰线的反相：黑底上的结构线用白色 18% 透明度）
 - 长标题用 `.plan-title`（h1 的缩小变体）；滚动显现统一用 `.reveal` 类
 
 ## 发布流程

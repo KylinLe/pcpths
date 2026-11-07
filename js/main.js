@@ -1,6 +1,6 @@
 /* ============================================================
    普陀中学摄影社 — 交互脚本
-   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 平滑锚点
+   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 平滑锚点
    ============================================================ */
 
 (function () {
@@ -94,7 +94,25 @@
     });
   }
 
-  /* ---------- 5. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
+  /* ---------- 5. 通知栏（计划分页） ---------- */
+  var notice = document.getElementById('notice');
+  var noticeClose = document.getElementById('noticeClose');
+
+  if (notice && noticeClose) {
+    var noticeClosed = false;
+    try { noticeClosed = sessionStorage.getItem('pcpths-plan-notice') === 'closed'; } catch (e) {}
+
+    function hideNotice() {
+      notice.remove();
+      document.body.classList.remove('has-notice');
+      try { sessionStorage.setItem('pcpths-plan-notice', 'closed'); } catch (e) {}
+    }
+
+    if (noticeClosed) hideNotice();
+    noticeClose.addEventListener('click', hideNotice);
+  }
+
+  /* ---------- 6. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
   if (!('scrollBehavior' in document.documentElement.style)) {
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {

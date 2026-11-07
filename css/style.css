@@ -12,6 +12,7 @@
 
   --pad: clamp(20px, 5vw, 64px);
   --maxw: 1180px;
+  --notice-h: 44px;
 
   --ease: cubic-bezier(.22,.61,.24,1);
 }
@@ -123,6 +124,41 @@ img{ display:block; max-width:100%; }
   border-bottom:1px solid var(--line);
 }
 .mobile-menu.is-open{ display:block; }
+
+/* ---------- 通知栏（计划分页顶部） ---------- */
+.has-notice main{ padding-top:var(--notice-h); }
+.notice{
+  position:fixed; top:64px; left:0; right:0; z-index:99;
+  height:var(--notice-h);
+  background:var(--ink);
+  display:flex; align-items:stretch;
+  animation:notice-in .7s var(--ease) .2s backwards;
+}
+.notice-link{
+  flex:1; min-width:0;
+  display:flex; align-items:center; gap:clamp(10px,2vw,16px);
+  padding:0 var(--pad);
+  color:var(--paper); font-size:12px; letter-spacing:.16em;
+}
+.notice-link .t{ font-weight:600; }
+.notice-link .more{ color:rgba(255,255,255,.55); letter-spacing:.12em; transition:color .3s var(--ease); }
+.notice-link:hover .more{ color:var(--paper); }
+.notice-close{
+  flex:0 0 auto; width:48px;
+  background:none; border:0; border-left:1px solid rgba(255,255,255,.18);
+  cursor:pointer; position:relative;
+  transition:background .3s var(--ease);
+}
+.notice-close:hover{ background:rgba(255,255,255,.08); }
+.notice-close span{
+  position:absolute; left:50%; top:50%; width:14px; height:1px; background:var(--paper);
+}
+.notice-close span:nth-child(1){ transform:translate(-50%,-50%) rotate(45deg); }
+.notice-close span:nth-child(2){ transform:translate(-50%,-50%) rotate(-45deg); }
+@keyframes notice-in{
+  from{ transform:translateY(-100%); opacity:0; }
+  to{ transform:translateY(0); opacity:1; }
+}
 
 /* ---------- 首屏 ---------- */
 .hero{
@@ -346,6 +382,8 @@ p{ color:var(--muted); }
   .platform-btn{ margin-left:auto; padding:7px 14px; }
   .nav .brand .sub{ display:none; }
   .menu-btn{ display:block; }
+  .notice-link{ font-size:11px; gap:10px; }
+  .notice-link .more{ letter-spacing:.08em; }
   .sec-head,.sec-body{ grid-template-columns:1fr; gap:14px; }
   .sec-num{ padding-top:0; }
   .list-item{ grid-template-columns:40px minmax(0,1fr); }
