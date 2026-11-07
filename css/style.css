@@ -295,8 +295,30 @@ p{ color:var(--muted); }
   width:100%; max-width:var(--maxw);
   margin-top:clamp(56px,8vw,96px);
   border-top:1px solid var(--ink);
-  min-height:40vh;
+  min-height:24vh;
 }
+
+/* 计划内容 —— 规格清单 */
+.spec-list{ margin-top:clamp(24px,4vw,40px); }
+.spec-item{
+  display:grid;
+  grid-template-columns:clamp(40px,6vw,80px) minmax(0,1fr) minmax(0,1.6fr);
+  gap:clamp(12px,3vw,32px);
+  align-items:baseline;
+  padding:clamp(24px,3vw,36px) 0;
+  border-bottom:1px solid var(--line);
+}
+.spec-item:first-child{ border-top:1px solid var(--ink); }
+.spec-item .n{ font-size:11px; letter-spacing:.18em; color:var(--faint); }
+.spec-item .k{
+  font-size:13px; letter-spacing:.16em; font-weight:600; color:var(--muted);
+}
+.spec-item .k .en{
+  display:block; margin-top:6px;
+  font-size:9.5px; letter-spacing:.24em; text-transform:uppercase;
+  color:var(--faint); font-weight:500;
+}
+.spec-item .v{ font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.01em; }
 
 /* ---------- 页脚 ---------- */
 .foot{
@@ -337,6 +359,8 @@ p{ color:var(--muted); }
   .list-item{ grid-template-columns:40px minmax(0,1fr); }
   .list-item .d{ grid-column:2; }
   .list-item .go{ grid-column:2; justify-self:start; margin-top:10px; }
+  .spec-item{ grid-template-columns:40px minmax(0,1fr); }
+  .spec-item .v{ grid-column:2; }
   .foot-inner{ flex-direction:column; align-items:flex-start; }
   .foot .legal{ text-align:left; }
   .foot.foot-bar .foot-inner{ flex-direction:row; align-items:center; justify-content:space-between; }
