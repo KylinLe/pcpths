@@ -16,14 +16,15 @@
 ## 目录结构
 
 ```
-├── index.html          # 主页（单页：首屏、01 课程、02 任务、03 后续计划、04 安卓版 APP）
+├── index.html          # 主页（单页：首屏、01 课程、02 任务、03 后续计划、04 安卓版 APP、05 苹果版 APP）
 ├── css/style.css       # 全部样式（设计变量在 :root）
 ├── js/main.js          # 全部交互（对缺失元素有防御性判断，可安全用于任何分页面）
 ├── plan/               # 计划分页面
 │   ├── clubs-greeting.html   # 元旦各社团祝福拍摄（已填内容）
 │   └── gala-recording.html   # 元旦晚会拍摄与录制（岗位安排表）
-├── downloads/          # 供下载的文件
-│   └── pcpths_android.apk    # 安卓版 APP 安装包（主页 04 模块下载按钮指向这里）
+├── downloads/          # 供下载的文件（主页下载按钮指向这里）
+│   ├── pcpths_android.apk    # 安卓版 APP 安装包（04 模块）
+│   └── 普陀中学摄影社.mobileconfig  # 苹果版安装配置文件（05 模块）
 ├── assets/logo.png     # 社团 logo（导航、页脚、favicon）
 └── .gitignore          # 排除 .DS_Store
 ```
@@ -42,8 +43,8 @@
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
 | 通知栏 | `.notice`（主页顶栏下方固定黑底细条：`.notice-link` 整条可点跳转 `#plans` + `.notice-close` 细线 × 可关闭；`body` 加 `has-notice` 类给内容与锚点让位） |
-| 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言） |
-| 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 确认按钮；Esc / 点遮罩关闭） |
+| 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言；`data-file` 属性提供弹窗显示的文件名） |
+| 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 确认按钮；Esc / 点遮罩关闭；文件名由按钮 `data-file` 动态填入 `#dlFile`） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
 

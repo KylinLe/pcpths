@@ -112,18 +112,26 @@
     noticeClose.addEventListener('click', hideNotice);
   }
 
-  /* ---------- 6. 下载弹窗 ---------- */
-  var dlBtn = document.getElementById('dlBtn');
+  /* ---------- 6. 下载弹窗（所有 .dl-btn 通用，弹窗内显示对应文件名） ---------- */
+  var dlBtns = Array.prototype.slice.call(document.querySelectorAll('.dl-btn'));
   var dlModal = document.getElementById('dlModal');
 
-  if (dlBtn && dlModal) {
+  if (dlBtns.length && dlModal) {
     var dlClose = document.getElementById('dlModalClose');
     var dlMask = dlModal.querySelector('.modal-mask');
+    var dlFile = document.getElementById('dlFile');
 
-    function openModal() { dlModal.classList.add('is-open'); }
+    function openModal(name) {
+      if (dlFile && name) dlFile.textContent = name;
+      dlModal.classList.add('is-open');
+    }
     function closeModal() { dlModal.classList.remove('is-open'); }
 
-    dlBtn.addEventListener('click', openModal);
+    dlBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        openModal(b.getAttribute('data-file') || '');
+      });
+    });
     if (dlClose) dlClose.addEventListener('click', closeModal);
     if (dlMask) dlMask.addEventListener('click', closeModal);
     document.addEventListener('keydown', function (e) {

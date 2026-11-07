@@ -8,7 +8,7 @@ Website of Photography Club of Putuo High School（普陀中学摄影社官方�
 
 摄影社官方静态网站，采用 **细线 / 黑白 / 字距** 的极简设计，全站统一设计语言。包含：
 
-- **首页**：首屏（"留住光"）、课程介绍、任务与活动、后续摄影计划、安卓版 APP 下载（点击下载 pcpths_android.apk 并弹窗提示）；顶栏下方有"拍摄计划更新"通知栏，点击直达后续计划，可一键关闭
+- **首页**：首屏（"留住光"）、课程介绍、任务与活动、后续摄影计划、APP 下载（安卓版 pcpths_android.apk / 苹果版 普陀中学摄影社.mobileconfig，点击下载并弹窗提示）；顶栏下方有"拍摄计划更新"通知栏，点击直达后续计划，可一键关闭
 - **计划分页**：元旦各社团祝福拍摄、元旦晚会拍摄与录制
 - 移动端自适应、滚动显现动画、毛玻璃导航栏
 
@@ -23,8 +23,9 @@ Website of Photography Club of Putuo High School（普陀中学摄影社官方�
 ├── plan/               # 后续计划分页面
 │   ├── clubs-greeting.html   # 元旦各社团祝福拍摄
 │   └── gala-recording.html   # 元旦晚会拍摄与录制
-├── downloads/
-│   └── pcpths_android.apk    # 安卓版 APP 安装包（下载按钮指向这里）
+├── downloads/               # 下载按钮指向这里
+│   ├── pcpths_android.apk           # 安卓版 APP 安装包
+│   └── 普陀中学摄影社.mobileconfig   # 苹果版安装配置文件
 └── assets/
     └── logo.png        # 社团 logo（导航栏、页脚、浏览器标签页图标）
 ```
