@@ -40,15 +40,26 @@
   </div>
 </header>
 
-<!-- ================= 通知栏 ================= -->
-<div class="notice" id="notice">
-  <a class="notice-link" href="#plans">
-    <span class="t">拍摄计划更新</span>
-    <span class="more">查看后续计划 →</span>
-  </a>
-  <button class="notice-close" id="noticeClose" aria-label="关闭通知">
-    <span></span><span></span>
-  </button>
+<!-- ================= 通知栏（可多条堆叠） ================= -->
+<div class="notices" id="notices">
+  <div class="notice" id="notice-app">
+    <a class="notice-link" href="#android">
+      <span class="t">普陀中学摄影社 APP 已上线</span>
+      <span class="more">前往下载 →</span>
+    </a>
+    <button class="notice-close" aria-label="关闭通知">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="notice" id="notice-plans">
+    <a class="notice-link" href="#plans">
+      <span class="t">拍摄计划更新</span>
+      <span class="more">查看后续计划 →</span>
+    </a>
+    <button class="notice-close" aria-label="关闭通知">
+      <span></span><span></span>
+    </button>
+  </div>
 </div>
 
 <main id="top">

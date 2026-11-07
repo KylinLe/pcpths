@@ -24,7 +24,7 @@ html{
   scroll-behavior:smooth;
 }
 section[id]{ scroll-margin-top:64px; }
-.has-notice section[id]{ scroll-margin-top:calc(64px + var(--notice-h)); }
+.has-notice section[id]{ scroll-margin-top:calc(64px + var(--notices-h, var(--notice-h))); }
 
 body{
   background:var(--paper);
@@ -126,15 +126,18 @@ img{ display:block; max-width:100%; }
 }
 .mobile-menu.is-open{ display:block; }
 
-/* ---------- 通知栏（计划分页顶部） ---------- */
-.has-notice main{ padding-top:var(--notice-h); }
-.notice{
+/* ---------- 通知栏（主页顶栏下方，可多条堆叠，各自可关闭） ---------- */
+.has-notice main{ padding-top:var(--notices-h, var(--notice-h)); }
+.notices{
   position:fixed; top:64px; left:0; right:0; z-index:99;
+  animation:notice-in .7s var(--ease) .15s backwards;
+}
+.notice{
   height:var(--notice-h);
   background:var(--ink);
   display:flex; align-items:stretch;
-  animation:notice-in .7s var(--ease) .2s backwards;
 }
+.notice + .notice{ border-top:1px solid rgba(255,255,255,.18); }
 .notice-link{
   flex:1; min-width:0;
   display:flex; align-items:center; gap:clamp(10px,2vw,16px);

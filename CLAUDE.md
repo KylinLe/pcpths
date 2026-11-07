@@ -44,7 +44,7 @@
 | 可点击列表 | `.list-item.plan-item` 加 `.go` 小按钮（主页"后续计划"用法） |
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
-| 通知栏 | `.notice`（主页顶栏下方固定黑底细条：`.notice-link` 整条可点跳转 `#plans` + `.notice-close` 细线 × 可关闭；`body` 加 `has-notice` 类给内容与锚点让位） |
+| 通知栏 | `.notices` 容器（主页顶栏下方固定）+ 多条 `.notice` 黑底细条堆叠（`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭；JS 按可见条数动态更新 `--notice-h`，`body` 加 `has-notice` 给内容与锚点让位） |
 | 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言；带 `data-file` 属性的才会触发下载弹窗，普通链接跳转不弹窗） |
 | 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 按钮；Esc / 点遮罩关闭。`#dlModal` 开始下载提示，文件名由按钮 `data-file` 动态填入 `#dlFile`；`#iosModal` Safari 使用提醒，确定后下载并跳转指南页） |
 
@@ -58,7 +58,7 @@
 - 计划分页（`plan/`）内容区不设上下框线，以留白分隔
 - 分页面引用路径相对（`../css/style.css`、`../assets/logo.png`）
 - 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）
-- 主页通知栏 `.notice`（黑底白字，白底浅灰线的反相：黑底上的结构线用白色 18% 透明度；关闭后本次浏览不再出现）
+- 主页通知栏 `.notices`（黑底白字，可多条堆叠，条与条之间用白色 18% 细线分隔——白底浅灰线的反相；关闭后本次浏览不再出现）
 - 长标题用 `.plan-title`（h1 的缩小变体）；滚动显现统一用 `.reveal` 类
 
 ## 发布流程
