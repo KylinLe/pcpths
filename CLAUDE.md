@@ -66,12 +66,13 @@
 ## 目录结构
 
 ```
-├── index.html          # 主页（单页：首屏、01 课程、02 任务、03 后续计划、04 APP 下载（安卓 / 苹果双按钮；苹果带 Safari 提醒弹窗 → 确定后下载并跳转安装指南））
+├── index.html          # 主页（单页：首屏、01 课程、02 任务、03 后续计划、04 APP 下载（安卓 / 苹果双按钮；苹果带 Safari 提醒弹窗 → 确定后下载并跳转安装指南）、05 测试一（测试 Android App 联动用））
 ├── css/style.css       # 全部样式（设计变量在 :root）
 ├── js/main.js          # 全部交互（对缺失元素有防御性判断，可安全用于任何分页面）
 ├── plan/               # 计划分页面
 │   ├── clubs-greeting.html   # 元旦各社团祝福拍摄（已填内容）
-│   └── gala-recording.html   # 元旦晚会拍摄与录制（岗位安排表）
+│   ├── gala-recording.html   # 元旦晚会拍摄与录制（岗位安排表）
+│   └── test-article.html     # 测试文章「测试」（测试 Android App 联动用）
 ├── guide/              # 使用指南分页面
 │   └── ios-install.html    # 苹果版 APP 安装指南（主页 04 APP 下载模块的苹果版按钮跳转到这里）
 ├── downloads/          # 供下载的文件（主页下载按钮指向这里）
