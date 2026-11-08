@@ -95,12 +95,12 @@
 | 可点击列表 | `.list-item.plan-item` 加 `.go` 小按钮（主页"后续计划"用法） |
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
-| 通知栏 | `.notices` 容器（主页顶栏下方固定，始终留在 DOM）+ 多条 `.notice` 黑底细条堆叠（`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭；JS 按可见条数动态更新 `--notices-h`，`body` 加 `has-notice` 给内容与锚点让位；关闭记录存 localStorage 同浏览器持久，顶栏「通知」入口可重新显示全部并重播 `.repop` 滑入动画作为弹出反馈） |
+| 通知栏 | `.notices` 容器（主页顶栏下方固定，始终留在 DOM）+ 多条 `.notice` 深色液态玻璃细条堆叠（半透明黑 + 背景模糊；`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭；JS 按可见条数动态更新 `--notices-h`，`body` 加 `has-notice` 给内容与锚点让位；关闭记录存 localStorage 同浏览器持久，顶栏「通知」入口可重新显示全部并重播 `.repop` 滑入动画作为弹出反馈） |
 | 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言；带 `data-file` 属性的才会触发下载弹窗，普通链接跳转不弹窗；多个按钮用 `.dl-opts` 双栏网格并排，移动端单列） |
 | 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 按钮；Esc / 点遮罩关闭。`#dlModal` 开始下载提示，文件名由按钮 `data-file` 动态填入 `#dlFile`；`#iosModal` Safari 使用提醒，确定后下载并跳转指南页） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
-- **液态玻璃**：顶栏 `.nav` 与按钮（`.platform-btn`、`.go`、`.dl-btn`、`.modal-btn`）使用半透明白 + backdrop-filter 模糊 + 柔和阴影；按钮黑色 1px 描边与悬停反色保持不变；图标按钮（菜单、通知 ×）不用玻璃；不支持背景模糊的浏览器回退纯白底
+- **液态玻璃**：顶栏 `.nav`、底栏 `.foot` / `.foot.foot-bar`、按钮（`.platform-btn`、`.go`、`.dl-btn`、`.modal-btn`）用浅色玻璃（半透明白 + backdrop-filter 模糊 + 柔和阴影），通知条 `.notice` 用深色玻璃（半透明黑 + 模糊）。按钮黑色 1px 描边不变；交互改为：悬停轻微放大（不反色），按下高亮并进一步放大（JS 加 `.is-pressed`，光标离开前保持）；图标按钮（菜单、通知 ×）不用玻璃；不支持背景模糊的浏览器回退纯白/纯黑底
 
 ### 细线规则（美观为先，禁止过度使用）
 
@@ -109,8 +109,8 @@
 - 只用 1px；同方向禁止近距双线；拿不准就用浅灰
 - 计划分页（`plan/`）内容区不设上下框线，以留白分隔
 - 分页面引用路径相对（`../css/style.css`、`../assets/logo.png`）
-- 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，白底细线，无毛玻璃）
-- 主页通知栏 `.notices`（黑底白字，可多条堆叠，条与条之间用白色 18% 细线分隔——白底浅灰线的反相；关闭后同浏览器不再出现，顶栏「通知」可重新显示）
+- 计划分页面特有：底部固定底栏 `.foot.foot-bar`（logo + 版权，液态玻璃底，细线上边）
+- 主页通知栏 `.notices`（深色玻璃底白字，可多条堆叠，条与条之间用白色 18% 细线分隔——白底浅灰线的反相；关闭后同浏览器不再出现，顶栏「通知」可重新显示）
 - 长标题用 `.plan-title`（h1 的缩小变体）；滚动显现统一用 `.reveal` 类
 
 ## 发布流程

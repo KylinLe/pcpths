@@ -1,6 +1,6 @@
 /* ============================================================
    普陀中学摄影社 — 交互脚本
-   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 下载弹窗 / Safari 提醒弹窗 / 平滑锚点
+   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 下载弹窗 / Safari 提醒弹窗 / 按钮按压反馈 / 平滑锚点
    ============================================================ */
 
 (function () {
@@ -215,7 +215,15 @@
     });
   }
 
-  /* ---------- 8. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
+  /* ---------- 8. 按钮按压反馈（按下高亮并放大，光标离开前保持） ---------- */
+  Array.prototype.slice.call(document.querySelectorAll('.platform-btn, .plan-item .go, .dl-btn, .modal-btn')).forEach(function (b) {
+    b.addEventListener('pointerdown', function () { b.classList.add('is-pressed'); });
+    b.addEventListener('pointerleave', function () { b.classList.remove('is-pressed'); });
+    b.addEventListener('pointercancel', function () { b.classList.remove('is-pressed'); });
+    b.addEventListener('focusout', function () { b.classList.remove('is-pressed'); });
+  });
+
+  /* ---------- 9. 锚点平滑滚动（兼容不支持 scroll-behavior 的浏览器） ---------- */
   if (!('scrollBehavior' in document.documentElement.style)) {
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {

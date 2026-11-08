@@ -100,9 +100,8 @@ img{ display:block; max-width:100%; }
   border:1px solid var(--ink);
   font-size:12px; letter-spacing:.14em;
   white-space:nowrap;
-  transition:background .3s var(--ease), color .3s var(--ease);
+  transition:transform .35s var(--ease), background .3s var(--ease), color .3s var(--ease), box-shadow .35s var(--ease);
 }
-.platform-btn:hover{ background:var(--ink); color:var(--paper); }
 
 .menu-btn{
   display:none; width:40px; height:40px; margin-right:-8px;
@@ -135,7 +134,9 @@ img{ display:block; max-width:100%; }
 }
 .notice{
   height:var(--notice-h);
-  background:var(--ink);
+  background:rgba(15,15,15,.55);
+  backdrop-filter:blur(14px) saturate(1.4);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);
   display:flex; align-items:stretch;
 }
 .notice + .notice{ border-top:1px solid rgba(255,255,255,.18); }
@@ -305,9 +306,8 @@ p{ color:var(--muted); }
   border:1px solid var(--ink);
   font-size:12px; letter-spacing:.14em;
   white-space:nowrap;
-  transition:background .3s var(--ease), color .3s var(--ease);
+  transition:transform .35s var(--ease), background .3s var(--ease), color .3s var(--ease), box-shadow .35s var(--ease);
 }
-.plan-item:hover .go{ background:var(--ink); color:var(--paper); }
 
 /* ---------- 计划页 ---------- */
 .plan-page{ padding-bottom:clamp(64px, 8vw, 96px); }
@@ -363,9 +363,8 @@ p{ color:var(--muted); }
   border:1px solid var(--ink);
   font-size:13px; font-weight:600; letter-spacing:.16em;
   white-space:nowrap;
-  transition:background .3s var(--ease), color .3s var(--ease);
+  transition:transform .35s var(--ease), background .3s var(--ease), color .3s var(--ease), box-shadow .35s var(--ease);
 }
-.dl-btn:hover{ background:var(--ink); color:var(--paper); }
 .dl-meta{ margin-top:14px; font-size:11px; letter-spacing:.12em; color:var(--faint); }
 
 /* 多个下载按钮并排 */
@@ -407,9 +406,8 @@ p{ color:var(--muted); }
   background:var(--paper); color:var(--ink);
   font-size:12px; letter-spacing:.14em;
   cursor:pointer;
-  transition:background .3s var(--ease), color .3s var(--ease);
+  transition:transform .35s var(--ease), background .3s var(--ease), color .3s var(--ease), box-shadow .35s var(--ease);
 }
-.modal-btn:hover{ background:var(--ink); color:var(--paper); }
 @keyframes modal-fade{ from{ opacity:0; } to{ opacity:1; } }
 @keyframes modal-in{
   from{ opacity:0; transform:translate(-50%,-44%); }
@@ -430,17 +428,37 @@ p{ color:var(--muted); }
   color:var(--faint); line-height:1.9;
 }
 
-/* ---------- 液态玻璃（按钮；顶栏见 .nav 自身规则） ---------- */
+/* ---------- 液态玻璃（按钮 / 底栏；顶栏见 .nav 自身规则） ---------- */
 .platform-btn, .plan-item .go, .dl-btn, .modal-btn{
   background:rgba(255,255,255,.5);
   backdrop-filter:blur(12px) saturate(1.5);
   -webkit-backdrop-filter:blur(12px) saturate(1.5);
   box-shadow:0 1px 2px rgba(15,15,15,.05), 0 8px 24px rgba(15,15,15,.07), inset 0 1px 0 rgba(255,255,255,.9);
 }
-/* 不支持背景模糊的浏览器回退为纯白，保证文字可读 */
+/* 光标靠近：轻微放大，不反色 */
+.platform-btn:hover, .plan-item:hover .go, .dl-btn:hover, .modal-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 2px 4px rgba(15,15,15,.06), 0 10px 28px rgba(15,15,15,.09), inset 0 1px 0 rgba(255,255,255,.9);
+}
+/* 按下：高亮 + 在放大基础上再放大（JS 加 .is-pressed，光标离开前保持） */
+.platform-btn.is-pressed, .plan-item .go.is-pressed, .dl-btn.is-pressed, .modal-btn.is-pressed{
+  transform:scale(1.12);
+  background:rgba(255,255,255,.94);
+  box-shadow:0 0 0 4px rgba(15,15,15,.05), 0 2px 4px rgba(15,15,15,.06), 0 14px 36px rgba(15,15,15,.12), inset 0 1px 0 #fff;
+}
+/* 页脚 / 底栏（计划页底部固定底栏随内容滚动穿过时可见模糊） */
+.foot, .foot.foot-bar{
+  background:rgba(255,255,255,.58);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+}
+.foot.foot-bar{ box-shadow:0 -6px 24px rgba(15,15,15,.05), inset 0 1px 0 rgba(255,255,255,.85); }
+/* 不支持背景模糊的浏览器回退为纯白/纯黑，保证文字可读 */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .nav{ background:var(--paper); }
+  .notice{ background:var(--ink); }
   .platform-btn, .plan-item .go, .dl-btn, .modal-btn{ background:var(--paper); }
+  .foot, .foot.foot-bar{ background:var(--paper); }
 }
 
 /* ---------- 滚动显现 ---------- */
