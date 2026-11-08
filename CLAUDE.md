@@ -88,7 +88,7 @@
 
 | 用途 | 组件 |
 |------|------|
-| 顶部导航 | `.nav`（毛玻璃顶栏，含品牌区、链接、上课平台按钮、移动端菜单；主页导航与手机菜单含「通知」入口 `.notices-toggle`，点击重新显示全部通知） |
+| 顶部导航 | `.nav`（液态玻璃顶栏，含品牌区、链接、上课平台按钮、移动端菜单；主页导航与手机菜单含「通知」入口 `.notices-toggle`，点击重新显示全部通知） |
 | 页面首屏 | `section.hero` > `.wrap`：`.eyebrow` + `h1` + `.hero-en` |
 | 内容分节 | `section.sec` > `.wrap`：`.sec-head`（`.sec-num` + `h2` + `.en`）+ `.sec-body` |
 | 列表 | `.list`（黑色顶线）> `.list-item`（`.n` 序号 / `.t` 标题 / `.d` 描述） |
@@ -100,6 +100,7 @@
 | 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 按钮；Esc / 点遮罩关闭。`#dlModal` 开始下载提示，文件名由按钮 `data-file` 动态填入 `#dlFile`；`#iosModal` Safari 使用提醒，确定后下载并跳转指南页） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
+- **液态玻璃**：顶栏 `.nav` 与按钮（`.platform-btn`、`.go`、`.dl-btn`、`.modal-btn`）使用半透明白 + backdrop-filter 模糊 + 柔和阴影；按钮黑色 1px 描边与悬停反色保持不变；图标按钮（菜单、通知 ×）不用玻璃；不支持背景模糊的浏览器回退纯白底
 
 ### 细线规则（美观为先，禁止过度使用）
 

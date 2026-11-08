@@ -53,9 +53,10 @@ img{ display:block; max-width:100%; }
 /* ---------- 顶部导航 ---------- */
 .nav{
   position:fixed; inset:0 0 auto 0; z-index:100;
-  background:rgba(255,255,255,.82);
-  backdrop-filter:saturate(180%) blur(14px);
-  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  background:rgba(255,255,255,.6);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
+  box-shadow:0 1px 2px rgba(15,15,15,.04), 0 8px 24px rgba(15,15,15,.05), inset 0 1px 0 rgba(255,255,255,.9);
   border-bottom:1px solid transparent;
   transition:border-color .4s var(--ease), background .4s var(--ease);
 }
@@ -427,6 +428,19 @@ p{ color:var(--muted); }
 .foot .legal{
   text-align:right; font-size:12px; letter-spacing:.08em;
   color:var(--faint); line-height:1.9;
+}
+
+/* ---------- 液态玻璃（按钮；顶栏见 .nav 自身规则） ---------- */
+.platform-btn, .plan-item .go, .dl-btn, .modal-btn{
+  background:rgba(255,255,255,.5);
+  backdrop-filter:blur(12px) saturate(1.5);
+  -webkit-backdrop-filter:blur(12px) saturate(1.5);
+  box-shadow:0 1px 2px rgba(15,15,15,.05), 0 8px 24px rgba(15,15,15,.07), inset 0 1px 0 rgba(255,255,255,.9);
+}
+/* 不支持背景模糊的浏览器回退为纯白，保证文字可读 */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .nav{ background:var(--paper); }
+  .platform-btn, .plan-item .go, .dl-btn, .modal-btn{ background:var(--paper); }
 }
 
 /* ---------- 滚动显现 ---------- */
