@@ -66,7 +66,7 @@
 ## 目录结构
 
 ```
-├── index.html          # 主页（单页：首屏、01 课程、02 任务、03 后续计划、04 APP 下载（安卓按钮 → GitHub Releases 最新版固定链接，App 发新版无需改官网；苹果按钮带 Safari 提醒弹窗 → 确定后下载并跳转安装指南））
+├── index.html          # 主页（单页：首屏、01 课程、02 任务、03 后续计划、04 APP 下载（安卓按钮下载站内 pcpths-android.apk 并弹窗提示——国内访问 GitHub 慢，走站内文件，App 发新版时替换该文件；苹果按钮带 Safari 提醒弹窗 → 确定后下载并跳转安装指南））
 ├── css/style.css       # 全部样式（设计变量在 :root）
 ├── js/main.js          # 全部交互（对缺失元素有防御性判断，可安全用于任何分页面）
 ├── plan/               # 计划分页面
@@ -75,6 +75,7 @@
 ├── guide/              # 使用指南分页面
 │   └── ios-install.html    # 苹果版 APP 安装指南（主页 04 APP 下载模块的苹果版按钮跳转到这里）
 ├── downloads/          # 供下载的文件（主页下载按钮指向这里）
+│   ├── pcpths-android.apk      # 安卓版 APP 安装包（04 模块安卓按钮；App 发新版时替换此文件）
 │   └── 普陀中学摄影社.mobileconfig  # 苹果版安装配置文件（04 模块苹果版按钮）
 ├── assets/logo.png     # 社团 logo（导航、页脚、favicon）
 └── .gitignore          # 排除 .DS_Store
@@ -94,7 +95,7 @@
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
 | 通知栏 | `.notices` 容器（主页顶栏下方固定，始终留在 DOM）+ 多条 `.notice` 深色液态玻璃细条堆叠（半透明黑 + 背景模糊；`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭（click + pointerup 双绑定防个别浏览器吞掉点击，`touch-action:manipulation` 防手机双击缩放干扰）；JS 按可见条数动态更新 `--notices-h`，`body` 加 `has-notice` 给内容与锚点让位；关闭记录存 localStorage 同浏览器持久（localStorage 被禁用时自动改用 cookie 兜底），顶栏「通知」入口可重新显示全部并重播 `.repop` 滑入动画作为弹出反馈） |
-| 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言；带 `data-file` 属性的才会触发下载弹窗，普通链接跳转不弹窗——安卓按钮即普通链接，指向 GitHub Releases 最新版固定链接 `pcpths-android.apk`；多个按钮用 `.dl-opts` 双栏网格并排，移动端单列） |
+| 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言；带 `data-file` 属性的才会触发下载弹窗，普通链接跳转不弹窗——安卓按钮带 `data-file` 直接下载站内 `pcpths-android.apk` 并弹窗；多个按钮用 `.dl-opts` 双栏网格并排，移动端单列） |
 | 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 按钮；Esc / 点遮罩关闭。`#dlModal` 开始下载提示，文件名由按钮 `data-file` 动态填入 `#dlFile`；`#iosModal` Safari 使用提醒，确定后下载并跳转指南页） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
@@ -119,7 +120,7 @@
 
 ## 网络异常兜底
 
-github.com 主站时通时断（push 会超时）。api.github.com 通常稳定。**推送优先直接 `git push origin main`，失败可多等几秒重试（用户偏好）；多次重试仍失败时才用 `gh api` 的 Git Data API 兜底**：创建 blobs → 基于远程当前 tree 创建新 tree → 创建 commit（parent 指向远程 HEAD）→ PATCH `git/refs/heads/main`。上传成功后 `git fetch` 并 `reset --hard origin/main` 对齐本地（后台 until 循环重试，fetch 成功前不要在工作区继续改文件，否则会被 reset 覆盖）。
+github.com 主站时通时断（push 会超时）。api.github.com 通常稳定。**推送优先直接 `git push origin main`，失败可多等几秒重试（用户偏好）；最多重试 6 次，仍失败才用 `gh api` 的 Git Data API 兜底**：创建 blobs → 基于远程当前 tree 创建新 tree → 创建 commit（parent 指向远程 HEAD）→ PATCH `git/refs/heads/main`。上传成功后 `git fetch` 并 `reset --hard origin/main` 对齐本地（后台 until 循环重试，fetch 成功前不要在工作区继续改文件，否则会被 reset 覆盖）。
 
 API 兜底的注意点（踩过的坑）：
 - 请求体必须用 `gh api --input <json文件>` 传入，管道 stdin 无效（报 content missing_field）
