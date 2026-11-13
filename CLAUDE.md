@@ -94,7 +94,7 @@
 | 可点击列表 | `.list-item.plan-item` 加 `.go` 小按钮（主页"后续计划"用法） |
 | 课程卡片 | `.courses` > `.course`（`.idx` + `h3` + `.en` + `p`） |
 | 岗位表 | `.spec-table`（表头小字距，行间浅灰细线；移动端转卡片堆叠，`data-label` 提供字段名） |
-| 通知栏 | `.notices` 容器（主页顶栏下方固定，始终留在 DOM）+ 多条 `.notice` 深色液态玻璃细条堆叠（半透明黑 + 背景模糊；`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭；JS 按可见条数动态更新 `--notices-h`，`body` 加 `has-notice` 给内容与锚点让位；关闭记录存 localStorage 同浏览器持久，顶栏「通知」入口可重新显示全部并重播 `.repop` 滑入动画作为弹出反馈） |
+| 通知栏 | `.notices` 容器（主页顶栏下方固定，始终留在 DOM）+ 多条 `.notice` 深色液态玻璃细条堆叠（半透明黑 + 背景模糊；`.notice-link` 整条可点跳转对应板块 + `.notice-close` 细线 × 独立关闭（click + pointerup 双绑定防个别浏览器吞掉点击，`touch-action:manipulation` 防手机双击缩放干扰）；JS 按可见条数动态更新 `--notices-h`，`body` 加 `has-notice` 给内容与锚点让位；关闭记录存 localStorage 同浏览器持久（localStorage 被禁用时自动改用 cookie 兜底），顶栏「通知」入口可重新显示全部并重播 `.repop` 滑入动画作为弹出反馈） |
 | 下载按钮 | `.dl-btn`（黑色描边大按钮，悬停反色，与 `.platform-btn`/`.go` 同款按钮语言；带 `data-file` 属性的才会触发下载弹窗，普通链接跳转不弹窗；多个按钮用 `.dl-opts` 双栏网格并排，移动端单列） |
 | 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 按钮；Esc / 点遮罩关闭。`#dlModal` 开始下载提示，文件名由按钮 `data-file` 动态填入 `#dlFile`；`#iosModal` Safari 使用提醒，确定后下载并跳转指南页） |
 

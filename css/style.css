@@ -153,6 +153,7 @@ img{ display:block; max-width:100%; }
   flex:0 0 auto; width:48px;
   background:none; border:0; border-left:1px solid rgba(255,255,255,.18);
   cursor:pointer; position:relative;
+  touch-action:manipulation; /* 手机浏览器：去掉双击缩放干扰，点按立即生效 */
   transition:background .3s var(--ease);
 }
 .notice-close:hover{ background:rgba(255,255,255,.08); }

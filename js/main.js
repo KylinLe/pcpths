@@ -99,15 +99,36 @@
   if (notices.length) {
     var noticesBox = document.getElementById('notices');
     var storageKey = 'pcpths-notices-closed';
+
+    /* 存储读写：localStorage 优先，被禁用（隐私模式 / 安全策略）时用 cookie 兜底 */
+    function readClosed() {
+      try {
+        var v = localStorage.getItem(storageKey);
+        if (v) return v;
+      } catch (e) {}
+      try {
+        var m = document.cookie.match(new RegExp('(?:^|; )' + storageKey + '=([^;]*)'));
+        return m ? decodeURIComponent(m[1]) : '';
+      } catch (e2) {}
+      return '';
+    }
+    function writeClosed(list) {
+      var val = list.join(',');
+      try { localStorage.setItem(storageKey, val); } catch (e) {}
+      try {
+        document.cookie = storageKey + '=' + encodeURIComponent(val) + '; path=/; max-age=31536000; SameSite=Lax';
+      } catch (e2) {}
+    }
+
     var closedIds = [];
     try {
-      var stored = localStorage.getItem(storageKey) || '';
+      var stored = readClosed();
       // 迁移旧版记录（sessionStorage 仅本次浏览有效 → 持久化）
       if (!stored) stored = sessionStorage.getItem(storageKey) || '';
       if (sessionStorage.getItem('pcpths-plan-notice') === 'closed') {
         stored = stored ? stored + ',notice-plans' : 'notice-plans';
       }
-      if (stored) localStorage.setItem(storageKey, stored);
+      if (stored) writeClosed(stored.split(',').filter(Boolean));
       sessionStorage.removeItem(storageKey);
       sessionStorage.removeItem('pcpths-plan-notice');
       closedIds = stored.split(',').filter(Boolean);
@@ -123,9 +144,9 @@
     function closeNotice(n) {
       n.remove();
       try {
-        var list = (localStorage.getItem(storageKey) || '').split(',').filter(Boolean);
+        var list = readClosed().split(',').filter(Boolean);
         if (n.id && list.indexOf(n.id) === -1) list.push(n.id);
-        localStorage.setItem(storageKey, list.join(','));
+        writeClosed(list);
       } catch (e) {}
       syncNotices();
     }
@@ -133,7 +154,20 @@
     notices.forEach(function (n) {
       if (n.id && closedIds.indexOf(n.id) !== -1) { n.remove(); return; }
       var btn = n.querySelector('.notice-close');
-      if (btn) btn.addEventListener('click', function () { closeNotice(n); });
+      if (btn) {
+        var lastClose = 0;
+        function handleClose(e) {
+          /* pointerup 与 click 会对同一次点按先后触发，去重避免重复处理 */
+          if (e.type === 'click' && Date.now() - lastClose < 400) return;
+          lastClose = Date.now();
+          e.preventDefault();
+          e.stopPropagation();
+          closeNotice(n);
+        }
+        /* click + pointerup 双保险：个别浏览器环境会吞掉 click */
+        btn.addEventListener('click', handleClose);
+        btn.addEventListener('pointerup', handleClose);
+      }
     });
 
     /* 顶栏「通知」入口：重新显示全部通知，并重播滑入动画作为弹出反馈 */
@@ -144,6 +178,7 @@
           if (!document.documentElement.contains(n) && noticesBox) noticesBox.appendChild(n);
         });
         try { localStorage.removeItem(storageKey); } catch (err) {}
+        try { document.cookie = storageKey + '=; path=/; max-age=0'; } catch (err2) {}
         syncNotices();
         if (noticesBox) {
           noticesBox.classList.remove('repop');
