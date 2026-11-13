@@ -119,7 +119,13 @@
 
 ## 网络异常兜底
 
-github.com 主站时通时断（push 会超时）。api.github.com 通常稳定。当 git push 失败时，用 `gh api` 的 Git Data API 上传提交：创建 blobs → 基于远程当前 tree 创建新 tree → 创建 commit（parent 指向远程 HEAD）→ PATCH `git/refs/heads/main`。上传成功后 `git fetch` 并 `reset --hard origin/main` 对齐本地。文件内容用 python 生成 JSON（base64）后 `gh api --input` 传入，避免命令行参数过长。
+github.com 主站时通时断（push 会超时）。api.github.com 通常稳定。**推送优先直接 `git push origin main`，失败可多等几秒重试（用户偏好）；多次重试仍失败时才用 `gh api` 的 Git Data API 兜底**：创建 blobs → 基于远程当前 tree 创建新 tree → 创建 commit（parent 指向远程 HEAD）→ PATCH `git/refs/heads/main`。上传成功后 `git fetch` 并 `reset --hard origin/main` 对齐本地（后台 until 循环重试，fetch 成功前不要在工作区继续改文件，否则会被 reset 覆盖）。
+
+API 兜底的注意点（踩过的坑）：
+- 请求体必须用 `gh api --input <json文件>` 传入，管道 stdin 无效（报 content missing_field）
+- PATCH 分支用 `-F force=false`（显式布尔）；`-f force=false` 会按字符串传导致 422
+- 删除文件：tree 条目里写 `{"path": "...", "sha": null}`
+- 文件内容用 python 生成 JSON（base64）后 `gh api --input` 传入，避免命令行参数过长
 
 ## 已安装环境
 
