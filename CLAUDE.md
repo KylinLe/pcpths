@@ -27,7 +27,7 @@
 2. **新增计划说明页**：在 plan/ 新建页面，复用现有计划页的模板结构（首屏大标题 + 分节 + 列表/岗位表）；同时在首页「后续计划」列表里加一条带链接的可点击条目。
 3. **新增或修改通知**：用现有 notice 通知条结构（标题 + 跳转目标 + 关闭按钮）。跳转目标用锚点（如 #plans）指向栏目，App 会自动跳到对应标签。
 4. **已有页面内容的增删改**：列表项、课程卡片、岗位表等组件里的文字内容随便改，App 都能正确显示。
-5. **App 发新版**：安卓方会告知新的版本代码（递增整数），只改 index.html `<head>` 里的 `<meta name="app-version-code" content="4">` 的 content 数字（name 写法必须完全一致，App 靠它比对版本），同时用最新安装包替换 `downloads/pcpths-android.apk`。该文件地址必须始终指向最新版：`https://kylinle.github.io/pcpths/downloads/pcpths-android.apk`（App 自动更新从这里下载）。全站不使用 github.com 链接，下载一律走站内文件。
+5. **App 发新版**：安卓方会告知新的版本代码（递增整数），只改 index.html `<head>` 里的 `<meta name="app-version-code" content="5">` 的 content 数字（name 写法必须完全一致，App 靠它比对版本），同时用最新安装包替换 `downloads/pcpths-android.apk`。该文件地址必须始终指向最新版：`https://kylinle.github.io/pcpths/downloads/pcpths-android.apk`（App 自动更新从这里下载）。全站不使用 github.com 链接，下载一律走站内文件。
 
 ### 三、App 认识的组件清单（内容只能使用这些组件）
 
