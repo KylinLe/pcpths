@@ -411,6 +411,12 @@ p{ color:var(--muted); }
   text-align:right; font-size:12px; letter-spacing:.08em;
   color:var(--faint); line-height:1.9;
 }
+/* 底栏 logo 横幅（｜ 与品牌区隔开） */
+.foot-badge{
+  display:flex; align-items:center; gap:10px;
+  color:var(--faint);
+}
+.foot-badge img{ height:24px; width:auto; display:block; }
 
 /* ---------- 液态玻璃（按钮 / 底栏；顶栏见 .nav 自身规则） ---------- */
 .platform-btn, .plan-item .go, .dl-btn, .modal-btn{

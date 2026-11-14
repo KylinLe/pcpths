@@ -43,7 +43,8 @@ Website of Photography Club of Putuo High School（普陀中学摄影社官方�
 │   └── 普陀中学摄影社.mobileconfig   # 苹果版安装配置文件
 └── assets/
     ├── logo.png        # 社团 logo（页脚、浏览器标签页图标）
-    └── logo2.png       # 顶栏导航 logo
+    ├── logo2.png       # 顶栏导航 logo
+    └── logopths.gif    # 底栏 logo 横幅（｜ 与品牌区隔开）
 ```
 
 ## 设计规范：细线
