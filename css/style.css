@@ -71,6 +71,8 @@ img{ display:block; max-width:100%; }
 
 .brand{ display:flex; align-items:center; gap:12px; }
 .brand img{ width:26px; height:26px; flex:0 0 auto; }
+/* 顶栏 logo（logo2 为横向长方形，按原始比例显示，不做方形拉伸） */
+.nav .brand img{ width:34px; height:auto; }
 .brand .name{
   font-size:14px; font-weight:600; letter-spacing:.14em;
 }
