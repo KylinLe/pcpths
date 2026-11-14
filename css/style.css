@@ -418,7 +418,11 @@ p{ color:var(--muted); }
 .foot-badge{
   display:flex; align-items:center;
 }
-.foot-badge img{ height:30px; width:auto; display:block; }
+.foot-badge img{
+  height:30px; width:auto; display:block;
+  transition:opacity .3s var(--ease);
+}
+.foot-badge:hover img{ opacity:.65; }
 
 /* ---------- 液态玻璃（按钮 / 底栏；顶栏见 .nav 自身规则） ---------- */
 .platform-btn, .plan-item .go, .dl-btn, .modal-btn{
