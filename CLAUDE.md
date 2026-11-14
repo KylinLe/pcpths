@@ -80,7 +80,6 @@
 ├── assets/logo.png     # 社团 logo（页脚、favicon）
 ├── assets/logo2.png    # 顶栏导航 logo
 ├── assets/logopths.gif # 底栏 logo 横幅（紧邻品牌 logo，垂直居中，略大）
-├── assets/bgp1.jpg     # 全站背景图（cover 居中铺满、随页面滚动、不改变图片比例）
 └── .gitignore          # 排除 .DS_Store
 ```
 
@@ -102,7 +101,6 @@
 | 弹窗 | `.modal` > `.modal-mask` + `.modal-box`（浅灰细线框白底，`.modal-btn` 按钮；Esc / 点遮罩关闭。`#dlModal` 开始下载提示，文件名由按钮 `data-file` 动态填入 `#dlFile`；`#iosModal` Safari 使用提醒，确定后下载并跳转指南页） |
 
 - 颜色/间距一律用变量：`--ink --paper --muted --faint --line --pad --maxw --ease`
-- **全站背景图**：body 背景 `assets/bgp1.jpg`，`cover` 居中铺满、随页面滚动，不允许拉伸改变图片比例；换图时保持等比缩放（参考 1500×2000）
 - **液态玻璃**：顶栏 `.nav`、底栏 `.foot` / `.foot.foot-bar`、按钮（`.platform-btn`、`.go`、`.dl-btn`、`.modal-btn`）用浅色玻璃（半透明白 + backdrop-filter 模糊 + 柔和阴影），通知条 `.notice` 用深色玻璃（半透明黑 + 模糊）。按钮黑色 1px 描边不变；交互改为：悬停轻微放大（不反色），按下高亮并进一步放大（JS 加 `.is-pressed`，光标离开前保持）；图标按钮（菜单、通知 ×）不用玻璃；不支持背景模糊的浏览器回退纯白/纯黑底
 
 ### 细线规则（美观为先，禁止过度使用）

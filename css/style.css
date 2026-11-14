@@ -36,11 +36,6 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
-  /* 全站背景图：随页面滚动；cover 等比铺满，不拉伸变形 */
-  background-image:url(../assets/bgp1.jpg);
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
 }
 ::selection{ background:var(--ink); color:var(--paper); }
 
