@@ -20,7 +20,7 @@ Website of Photography Club of Putuo High School（普陀中学摄影社官方�
 - **自动适配（照常做）**：标准分节栏目、计划说明页、通知条的新增修改，以及列表 / 课程卡片 / 岗位表等组件内的文字增删改
 - **App 认识的组件**：分节 `sec`、列表 `list`、课程卡片 `courses`、岗位表 `spec-table`（行需保留 `data-label`）、通知条 `notice`、首屏 `hero`
 - **需协调升级 App（禁止悄悄上线）**：发明清单外的全新组件或排版、改变现有组件的结构含义（class 名、锚点 id、页面组织方式）。须先报告协调，App 升级后再一起上线
-- **其他**：锚点 id（`courses`、`missions`、`plans`）保持稳定；禁止内联样式；设计语言（细线 / 黑白 / 字距 / 六边形光孔）不变
+- **其他**：锚点 id（`courses`、`missions`、`plans`）保持稳定；禁止内联样式；设计语言（细线 / 黑白 / 字距）不变（六边形光孔旋转 logo 已移除）
 - App 不展示顶部导航栏、04 APP 下载板块、上课平台入口、页脚与弹窗，改动这些不影响 App
 
 完整约定见 `CLAUDE.md`。

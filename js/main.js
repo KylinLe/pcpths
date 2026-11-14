@@ -1,6 +1,6 @@
 /* ============================================================
    普陀中学摄影社 — 交互脚本
-   导航状态 / 光孔转动 / 滚动显现 / 移动端菜单 / 通知栏 / 下载弹窗 / Safari 提醒弹窗 / 按钮按压反馈 / 平滑锚点
+   导航状态 / 滚动显现 / 移动端菜单 / 通知栏 / 下载弹窗 / Safari 提醒弹窗 / 按钮按压反馈 / 平滑锚点
    ============================================================ */
 
 (function () {
@@ -19,27 +19,16 @@
     nav.classList.toggle('is-scrolled', y > 8);
   }
 
-  /* ---------- 2. 光孔随滚动缓慢转动（对焦感） ---------- */
-  var aperture = document.getElementById('aperture');
-  function onScrollAperture() {
-    if (!aperture || reduce) return;
-    var y = window.scrollY || window.pageYOffset;
-    var rot = Math.min(y * 0.06, 36);
-    aperture.style.transform = 'rotate(' + rot.toFixed(2) + 'deg)';
-  }
-
   var ticking = false;
   window.addEventListener('scroll', function () {
     if (ticking) return;
     ticking = true;
     window.requestAnimationFrame(function () {
       onScrollNav();
-      onScrollAperture();
       ticking = false;
     });
   }, { passive: true });
   onScrollNav();
-  onScrollAperture();
 
   /* ---------- 3. 滚动显现 ---------- */
   var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
