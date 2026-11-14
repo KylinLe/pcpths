@@ -44,7 +44,7 @@ Website of Photography Club of Putuo High School（普陀中学摄影社官方�
 └── assets/
     ├── logo.png        # 社团 logo（页脚、浏览器标签页图标）
     ├── logo2.png       # 顶栏导航 logo
-    └── logopths.gif    # 底栏 logo 横幅（与品牌 logo 图同高）
+    └── logopths.gif    # 底栏 logo 横幅（紧邻品牌 logo，垂直居中，略大）
 ```
 
 ## 设计规范：细线
