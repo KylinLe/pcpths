@@ -42,7 +42,8 @@ Website of Photography Club of Putuo High School（普陀中学摄影社官方�
 │   ├── pcpths-android.apk           # 安卓版 APP 安装包（发新版时替换）
 │   └── 普陀中学摄影社.mobileconfig   # 苹果版安装配置文件
 └── assets/
-    └── logo.png        # 社团 logo（导航栏、页脚、浏览器标签页图标）
+    ├── logo.png        # 社团 logo（页脚、浏览器标签页图标）
+    └── logo2.png       # 顶栏导航 logo
 ```
 
 ## 设计规范：细线

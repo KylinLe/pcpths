@@ -77,7 +77,8 @@
 ├── downloads/          # 供下载的文件（主页下载按钮指向这里）
 │   ├── pcpths-android.apk      # 安卓版 APP 安装包（04 模块安卓按钮；App 发新版时替换此文件）
 │   └── 普陀中学摄影社.mobileconfig  # 苹果版安装配置文件（04 模块苹果版按钮）
-├── assets/logo.png     # 社团 logo（导航、页脚、favicon）
+├── assets/logo.png     # 社团 logo（页脚、favicon）
+├── assets/logo2.png    # 顶栏导航 logo
 └── .gitignore          # 排除 .DS_Store
 ```
 
