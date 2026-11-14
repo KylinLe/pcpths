@@ -79,7 +79,7 @@
 │   └── 普陀中学摄影社.mobileconfig  # 苹果版安装配置文件（04 模块苹果版按钮）
 ├── assets/logo.png     # 社团 logo（页脚、favicon）
 ├── assets/logo2.png    # 顶栏导航 logo
-├── assets/logopths.gif # 底栏 logo 横幅（｜ 与品牌区隔开）
+├── assets/logopths.gif # 底栏 logo 横幅（首页与品牌文字同高，计划页与 logo 同高）
 └── .gitignore          # 排除 .DS_Store
 ```
 
