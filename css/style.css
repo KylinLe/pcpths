@@ -201,6 +201,7 @@ h1{
   font-size:clamp(15px,1.6vw,18px);
   line-height:1.95; color:var(--muted);
   max-width:26em;
+  overflow-wrap:anywhere;
 }
 .hero-desc strong{ color:var(--ink); font-weight:600; }
 
