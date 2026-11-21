@@ -42,6 +42,9 @@ body{
 a{ color:inherit; text-decoration:none; }
 img{ display:block; max-width:100%; }
 
+/* 仅供安卓 App 解析的内容（网页隐藏；App 按 HTML 结构解析、不读取 CSS，故不受影响） */
+.app-only{ display:none; }
+
 /* ---------- 通用容器 ---------- */
 .wrap{
   width:100%;
