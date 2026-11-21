@@ -275,7 +275,7 @@ p{ color:var(--muted); }
 .list-item:hover{ padding-left:10px; }
 .list-item .n{ font-size:11px; letter-spacing:.18em; color:var(--faint); }
 .list-item .t{ font-size:clamp(17px,2vw,21px); font-weight:600; letter-spacing:-.01em; }
-.list-item .d{ font-size:14.5px; line-height:1.85; color:var(--muted); }
+.list-item .d{ font-size:14.5px; line-height:1.85; color:var(--muted); overflow-wrap:anywhere; }
 
 /* 后续计划 —— 可点击列表（外观与任务列表一致） */
 .plan-item{ cursor:pointer; }
